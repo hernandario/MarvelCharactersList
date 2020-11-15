@@ -6,7 +6,8 @@ target 'MarvelCharactersList' do
   use_frameworks!
 
   pod 'Alamofire'
-
+  pod 'Kingfisher'
+  
   target 'MarvelCharactersListTests' do
     inherit! :search_paths
     # Pods for testing

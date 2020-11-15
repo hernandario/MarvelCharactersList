@@ -10,17 +10,26 @@ import UIKit
 protocol MCListViewProtocol: class {
     func showSpinner()
     func removeSpinner()
+    func fetchDidSucces(newItems: [MCListCharacter])
 }
 
 class MCListViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     
+    var items = [MCListCharacter]()
     var presenter: MCListPresenterProtol?
+    var offSet: Int = 0
+    var isLoading = false
+    var responseLimit = 20
     
-    var spinner = UIActivityIndicatorView(style: .large)
-
+    let spinnerView = UIView()
+    let spinner = UIActivityIndicatorView(style: .large)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initScene()
+        initUI()
     }
     
     private func initScene() {
@@ -30,25 +39,66 @@ class MCListViewController: UIViewController {
 
         interactor.presenter = presenter
         self.presenter = presenter
-        self.presenter?.viewDidLoad()
+        self.presenter?.fetchCharacters(offset: offSet, responseLimit: responseLimit)
     }
-
+    
+    private func initUI() {
+        setNavigationController()
+        setTalbeView()
+    }
+    
+    private func setNavigationController() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Marvel Characters"
+    }
+    
+    private func setTalbeView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        MCListCell.registerCell(for: tableView)
+    }
+    
+    @IBAction func refreshButtonDidTap(_ sender: Any) {
+        items = []
+        tableView.reloadData()
+        offSet = 0
+        presenter?.fetchCharacters(offset: offSet, responseLimit: responseLimit)
+    }
 }
 
+//MARK: - MCListViewProtocol
 extension MCListViewController: MCListViewProtocol {
+    func fetchDidSucces(newItems: [MCListCharacter]) {
+        offSet += responseLimit
+        isLoading = false
+        updateTableView(with: newItems)
+    }
+    
     func showSpinner() {
-        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        refreshButton.isEnabled = false
         spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.color = .white
         spinner.startAnimating()
-        view.addSubview(spinner)
+        spinnerView.addSubview(spinner)
+        spinner.centerXAnchor.constraint(equalTo: spinnerView.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: spinnerView.centerYAnchor).isActive = true
         
-        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        spinnerView.translatesAutoresizingMaskIntoConstraints = false
+        spinnerView.backgroundColor = .gray
+        spinnerView.alpha = 0.5
+        view.addSubview(spinnerView)
+        
+        
+        spinnerView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        spinnerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
     }
     
     func removeSpinner() {
+        refreshButton.isEnabled = true
         view.backgroundColor = .white
         spinner.stopAnimating()
         spinner.removeFromSuperview()
+        spinnerView.removeFromSuperview()
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol MCListrepositoryProtocol {
-    func fetchCharactersList(completion: @escaping (Result<Bool, Error>) -> Void)
+    func fetchCharactersList(offset: Int, responseLimit: Int, completion: @escaping (Result<[MCListCharacter], Error>) -> Void)
 }
 
 class MCListrepository: MCListrepositoryProtocol {
@@ -18,28 +18,28 @@ class MCListrepository: MCListrepositoryProtocol {
     
     private let host = "https://gateway.marvel.com:443"
     
-    func getParameters() -> [String: String] {
+    func getParameters(offset: Int, responseLimit: Int) -> [String: String] {
         let timeStamp = Date().timeIntervalSince1970
         let hash = "\(timeStamp)\(privateKey)\(publicKey)".MD5()
         let parameters = ["apikey": publicKey,
                           "ts": "\(timeStamp)",
                           "hash": hash,
-                          ]
+                          "offset": "\(offset)",
+                          "limit": "\(responseLimit)"]
         return parameters
     }
 }
 
 // MARK: - Character list calls
 extension MCListrepository {
-    func fetchCharactersList(completion: @escaping (Result<Bool, Error>) -> Void) {
+    func fetchCharactersList(offset: Int, responseLimit: Int,completion: @escaping (Result<[MCListCharacter], Error>) -> Void) {
         let request = "/v1/public/characters"
         let url = "\(host)\(request)"
         
-        AF.request(url, parameters: getParameters(), encoder: URLEncodedFormParameterEncoder.default).responseJSON { (response) in
+        AF.request(url, parameters: getParameters(offset: offset, responseLimit: responseLimit), encoder: URLEncodedFormParameterEncoder.default).responseDecodable(of: MCListCharactersResponse.self) { (response) in
             switch response.result {
             case .success(let data):
-                debugPrint("response: \(data)")
-                completion(.success(true))
+                completion(.success(data.data.results))
             case .failure(let error):
                 completion(.failure(error))
             }

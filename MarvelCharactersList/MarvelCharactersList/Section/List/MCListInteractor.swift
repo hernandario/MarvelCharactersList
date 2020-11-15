@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MCListInteractorProtocol {
-    func fetchCharactersList()
+    func fetchCharactersList(offset: Int, responseLimit: Int)
 }
 
 class MCListInteractor {
@@ -18,15 +18,15 @@ class MCListInteractor {
     init(repository: MCListrepositoryProtocol) {
         self.repository = repository
     }
-
+    
 }
 
 extension  MCListInteractor: MCListInteractorProtocol {
-    func fetchCharactersList() {
-        repository.fetchCharactersList { [weak self] (result) in
+    func fetchCharactersList(offset: Int, responseLimit: Int) {
+        repository.fetchCharactersList(offset: offset, responseLimit: responseLimit) { [weak self] (result) in
             switch result {
-            case .success:
-                self?.presenter?.fetchDidSucces()
+            case .success(let characterList):
+                self?.presenter?.fetchDidSucces(items: characterList)
             case .failure:
                 self?.presenter?.fetchDidFail()
             }

@@ -8,8 +8,8 @@
 import Foundation
 
 protocol MCListPresenterProtol: class {
-    func viewDidLoad()
-    func fetchDidSucces()
+    func fetchCharacters(offset: Int, responseLimit: Int)
+    func fetchDidSucces(items: [MCListCharacter])
     func fetchDidFail()
 }
 
@@ -26,14 +26,14 @@ class MCListPresenter {
 }
 
 extension MCListPresenter: MCListPresenterProtol {
-    func viewDidLoad() {
+    func fetchCharacters(offset: Int, responseLimit: Int) {
         view.showSpinner()
-        interactor.fetchCharactersList()
+        interactor.fetchCharactersList(offset: offset, responseLimit: responseLimit)
     }
     
-    func fetchDidSucces() {
+    func fetchDidSucces(items: [MCListCharacter]) {
         view.removeSpinner()
-        debugPrint("succes!")
+        view.fetchDidSucces(newItems: items)
     }
     
     func fetchDidFail() {
