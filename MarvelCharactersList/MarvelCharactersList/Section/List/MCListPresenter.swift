@@ -11,6 +11,7 @@ protocol MCListPresenterProtol: class {
     func fetchCharacters(offset: Int, responseLimit: Int)
     func fetchDidSucces(items: [MCListCharacter])
     func fetchDidFail()
+    func didSelectCharacter(_ character: MCListCharacter)
 }
 
 class MCListPresenter {
@@ -38,6 +39,10 @@ extension MCListPresenter: MCListPresenterProtol {
     
     func fetchDidFail() {
         view.removeSpinner()
-        debugPrint("fail!")
+        view.fetchDidFail()
+    }
+    
+    func didSelectCharacter(_ character: MCListCharacter) {
+        debugPrint("fcharacter selected: \(character.name)")
     }
 }

@@ -38,4 +38,8 @@ extension MCListViewController: UITableViewDelegate, UITableViewDataSource {
             presenter?.fetchCharacters(offset: offSet, responseLimit: responseLimit)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelectCharacter(items[indexPath.row])
+    }
 }

@@ -11,6 +11,7 @@ protocol MCListViewProtocol: class {
     func showSpinner()
     func removeSpinner()
     func fetchDidSucces(newItems: [MCListCharacter])
+    func fetchDidFail()
 }
 
 class MCListViewController: UIViewController {
@@ -72,6 +73,18 @@ extension MCListViewController: MCListViewProtocol {
         offSet += responseLimit
         isLoading = false
         updateTableView(with: newItems)
+    }
+    
+    func fetchDidFail() {
+        let alert = UIAlertController(title: "Ups...", message: "Coldn't load the data right now.\nPlase try again.", preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let refresh = UIAlertAction(title: "Refresh", style: .default) { [weak self] (alert) in
+            self?.refreshButtonDidTap(alert)
+        }
+        
+        alert.addAction(refresh)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
     
     func showSpinner() {
