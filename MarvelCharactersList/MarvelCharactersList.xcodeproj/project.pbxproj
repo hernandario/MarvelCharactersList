@@ -20,6 +20,7 @@
 		A0872F72256129F30031B802 /* MCListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0872F71256129F30031B802 /* MCListRouter.swift */; };
 		A0872F77256129FF0031B802 /* MCListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0872F76256129FF0031B802 /* MCListInteractor.swift */; };
 		A0872F7C25612A0F0031B802 /* MCListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0872F7B25612A0F0031B802 /* MCListPresenter.swift */; };
+		A0872F8B25612CBF0031B802 /* MCListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0872F8A25612CBF0031B802 /* MCListRepository.swift */; };
 		A7E61FB7007EBF8C03304461 /* Pods_MarvelCharactersListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAB1B2C0868012D8AA77982 /* Pods_MarvelCharactersListTests.framework */; };
 		B9A5B066D01C60C65AFE51C8 /* Pods_MarvelCharactersList_MarvelCharactersListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBE9901AD514FBB98F6B329 /* Pods_MarvelCharactersList_MarvelCharactersListUITests.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		A0872F71256129F30031B802 /* MCListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListRouter.swift; sourceTree = "<group>"; };
 		A0872F76256129FF0031B802 /* MCListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListInteractor.swift; sourceTree = "<group>"; };
 		A0872F7B25612A0F0031B802 /* MCListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListPresenter.swift; sourceTree = "<group>"; };
+		A0872F8A25612CBF0031B802 /* MCListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListRepository.swift; sourceTree = "<group>"; };
 		C9D0D4E523094BCA852B7DAE /* Pods-MarvelCharactersList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharactersList.release.xcconfig"; path = "Target Support Files/Pods-MarvelCharactersList/Pods-MarvelCharactersList.release.xcconfig"; sourceTree = "<group>"; };
 		DEE6EEE33785532B3EFE3EA0 /* Pods_MarvelCharactersList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelCharactersList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A692976339A1908334B2CC /* Pods-MarvelCharactersListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharactersListTests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelCharactersListTests/Pods-MarvelCharactersListTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		A0872EF2256120050031B802 /* MarvelCharactersList */ = {
 			isa = PBXGroup;
 			children = (
+				A0872F8625612B380031B802 /* Repository */,
 				A0872F33256125260031B802 /* Delegates */,
 				A0872F32256125070031B802 /* Resources */,
 				A0872F2C256124D80031B802 /* Section */,
@@ -162,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				A0872F49256127040031B802 /* MCListViewController.swift */,
-				A0872F69256129700031B802 /* MCListViewController.storyboard */,
 				A0872F71256129F30031B802 /* MCListRouter.swift */,
 				A0872F76256129FF0031B802 /* MCListInteractor.swift */,
 				A0872F7B25612A0F0031B802 /* MCListPresenter.swift */,
@@ -200,9 +202,18 @@
 		A0872F342561253B0031B802 /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
+				A0872F69256129700031B802 /* MCListViewController.storyboard */,
 				A0872EFE256120060031B802 /* LaunchScreen.storyboard */,
 			);
 			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		A0872F8625612B380031B802 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A0872F8A25612CBF0031B802 /* MCListRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		B1FDBBA68B96BE7D449E5C19 /* Frameworks */ = {
@@ -435,6 +446,7 @@
 				A0872F7C25612A0F0031B802 /* MCListPresenter.swift in Sources */,
 				A0872F77256129FF0031B802 /* MCListInteractor.swift in Sources */,
 				A0872EF4256120050031B802 /* AppDelegate.swift in Sources */,
+				A0872F8B25612CBF0031B802 /* MCListRepository.swift in Sources */,
 				A0872EF6256120050031B802 /* SceneDelegate.swift in Sources */,
 				A0872F52256127270031B802 /* MCListDetailViewController.swift in Sources */,
 			);
