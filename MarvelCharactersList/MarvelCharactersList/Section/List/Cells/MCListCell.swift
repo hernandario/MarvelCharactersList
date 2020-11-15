@@ -30,7 +30,7 @@ class MCListCell: UITableViewCell {
         titleLabel.text = character.name
         descriptionLabel.text = character.resultDescription
         descriptionView.isHidden = character.resultDescription.isEmpty
-        iconView.getMarvelAsset(url: "\(character.thumbnail.path).\(character.thumbnail.thumbnailExtension)")
+        iconView.getMarvelAsset(url: character.getThumbnail())
     }
 }
 

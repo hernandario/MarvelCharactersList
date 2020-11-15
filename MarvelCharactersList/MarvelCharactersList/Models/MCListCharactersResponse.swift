@@ -38,6 +38,10 @@ struct MCListCharacter: Codable {
         case resultDescription = "description"
         case modified, resourceURI, urls, thumbnail, comics, stories, events, series
     }
+    
+    func getThumbnail() -> String {
+        return "\(thumbnail.path).\(thumbnail.thumbnailExtension)"
+    }
 }
 
 // MARK: - Comics
