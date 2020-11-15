@@ -13,15 +13,15 @@ protocol MCListrepositoryProtocol {
 }
 
 class MCListrepository: MCListrepositoryProtocol {
-    private let publicKey = "5aee58147a25e22e3ae02c94b5b8dc5a"
-    private let privateKey = "bf7aa4965388219361b098ffccb2c9f660f8c20c"
+    public static let publicKey = "5aee58147a25e22e3ae02c94b5b8dc5a"
+    public static let privateKey = "bf7aa4965388219361b098ffccb2c9f660f8c20c"
     
     private let host = "https://gateway.marvel.com:443"
     
     func getParameters(offset: Int, responseLimit: Int) -> [String: String] {
         let timeStamp = Date().timeIntervalSince1970
-        let hash = "\(timeStamp)\(privateKey)\(publicKey)".MD5()
-        let parameters = ["apikey": publicKey,
+        let hash = "\(timeStamp)\(MCListrepository.privateKey)\(MCListrepository.publicKey)".MD5()
+        let parameters = ["apikey": MCListrepository.publicKey,
                           "ts": "\(timeStamp)",
                           "hash": hash,
                           "offset": "\(offset)",

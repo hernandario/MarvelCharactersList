@@ -10,14 +10,27 @@ import UIKit
 class MCListCell: UITableViewCell {
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        prepareIconView()
+    }
+    
+    private func prepareIconView() {
+        iconView.layer.cornerRadius = iconView.bounds.height / 2
+        iconView.layer.borderWidth = 1
+        iconView.layer.borderColor = UIColor.red.cgColor
+        iconView.contentMode = .scaleAspectFill
     }
     
     func set(with character: MCListCharacter) {
         titleLabel.text = character.name
+        descriptionLabel.text = character.resultDescription
+        descriptionView.isHidden = character.resultDescription.isEmpty
+        iconView.getMarvelAsset(url: "\(character.thumbnail.path).\(character.thumbnail.thumbnailExtension)")
     }
 }
 
