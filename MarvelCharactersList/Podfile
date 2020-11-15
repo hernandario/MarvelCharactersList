@@ -5,7 +5,7 @@ target 'MarvelCharactersList' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for MarvelCharactersList
+  pod 'Alamofire'
 
   target 'MarvelCharactersListTests' do
     inherit! :search_paths

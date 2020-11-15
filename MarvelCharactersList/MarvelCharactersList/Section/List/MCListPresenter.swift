@@ -25,6 +25,7 @@ class MCListPresenter {
 
 extension MCListPresenter: MCListPresenterProtol {
     func viewDidLoad() {
-        debugPrint("view did load")
+        view.showSpinner()
+        interactor.fetchCharactersList()
     }
 }
