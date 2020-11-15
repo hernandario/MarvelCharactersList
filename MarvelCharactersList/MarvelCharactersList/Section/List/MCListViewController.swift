@@ -47,6 +47,7 @@ extension MCListViewController: MCListViewProtocol {
     }
     
     func removeSpinner() {
+        view.backgroundColor = .white
         spinner.stopAnimating()
         spinner.removeFromSuperview()
     }

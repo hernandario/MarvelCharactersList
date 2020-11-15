@@ -23,6 +23,13 @@ class MCListInteractor {
 
 extension  MCListInteractor: MCListInteractorProtocol {
     func fetchCharactersList() {
-        //TODO: fetch list
+        repository.fetchCharactersList { [weak self] (result) in
+            switch result {
+            case .success:
+                self?.presenter?.fetchDidSucces()
+            case .failure:
+                self?.presenter?.fetchDidFail()
+            }
+        }
     }
 }
