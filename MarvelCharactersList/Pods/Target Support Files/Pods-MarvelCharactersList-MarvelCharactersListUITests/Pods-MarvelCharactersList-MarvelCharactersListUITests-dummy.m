@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_MarvelCharactersList_MarvelCharactersListUITests : NSObject
+@end
+@implementation PodsDummy_Pods_MarvelCharactersList_MarvelCharactersListUITests
+@end
