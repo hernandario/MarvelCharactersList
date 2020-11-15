@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MCListRouterProtocl: class {
-    func goToCharacterDetail(with charId: String)
+    func goToCharacterDetail(with character: MCListCharacter)
 }
 
 class MCListRouter {
@@ -20,7 +20,8 @@ class MCListRouter {
 }
 
 extension MCListRouter: MCListRouterProtocl {
-    func goToCharacterDetail(with charId: String) {
-        //TODO: go to char detail
+    func goToCharacterDetail(with character: MCListCharacter) {
+        guard let detailController = MCListDetailRouter.createModule(with: character) else { return }
+        controller.navigationController?.pushViewController(detailController, animated: true)
     }
 }

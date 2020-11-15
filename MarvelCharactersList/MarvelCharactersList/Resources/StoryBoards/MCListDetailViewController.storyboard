@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B55-8i-Tgs">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="fXg-sJ-gf6">
+            <objects>
+                <navigationController id="B55-8i-Tgs" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cs3-ey-ETp">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="MiH-Qr-ox7" kind="relationship" relationship="rootViewController" id="VAr-cb-wMS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4rB-Mf-EHp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4" y="153"/>
+        </scene>
+        <!--List Detail View Controller-->
+        <scene sceneID="z39-Ns-Vgj">
+            <objects>
+                <viewController storyboardIdentifier="MCListDetailViewController" id="MiH-Qr-ox7" customClass="MCListDetailViewController" customModule="MarvelCharactersList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jQo-NA-NQr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WuA-qt-2P4">
+                                <rect key="frame" x="0.0" y="268" width="414" height="628"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultLogo" translatesAutoresizingMaskIntoConstraints="NO" id="YBk-nq-ffY">
+                                <rect key="frame" x="0.0" y="88" width="414" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="6z6-vg-Y1t"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hER-ns-GMp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WuA-qt-2P4" firstAttribute="leading" secondItem="hER-ns-GMp" secondAttribute="leading" id="1MH-jL-MQB"/>
+                            <constraint firstItem="hER-ns-GMp" firstAttribute="trailing" secondItem="WuA-qt-2P4" secondAttribute="trailing" id="9Hb-9h-kte"/>
+                            <constraint firstItem="YBk-nq-ffY" firstAttribute="trailing" secondItem="hER-ns-GMp" secondAttribute="trailing" id="Cms-ks-lZp"/>
+                            <constraint firstAttribute="bottom" secondItem="WuA-qt-2P4" secondAttribute="bottom" id="RVJ-Ib-iJc"/>
+                            <constraint firstItem="YBk-nq-ffY" firstAttribute="top" secondItem="hER-ns-GMp" secondAttribute="top" id="WIa-g1-YAo"/>
+                            <constraint firstItem="YBk-nq-ffY" firstAttribute="leading" secondItem="hER-ns-GMp" secondAttribute="leading" id="yhi-AO-AR3"/>
+                            <constraint firstItem="WuA-qt-2P4" firstAttribute="top" secondItem="YBk-nq-ffY" secondAttribute="bottom" id="zBp-bz-2wd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="1Pg-gU-kEc"/>
+                    <connections>
+                        <outlet property="characterImage" destination="YBk-nq-ffY" id="E8M-kC-45j"/>
+                        <outlet property="tableView" destination="WuA-qt-2P4" id="FWi-np-esE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u8R-ic-tir" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="892.75362318840587" y="152.67857142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="defaultLogo" width="135" height="135"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

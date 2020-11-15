@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MCListInteractorProtocol {
+protocol MCListInteractorProtocol: class {
     func fetchCharactersList(offset: Int, responseLimit: Int)
 }
 
@@ -21,7 +21,7 @@ class MCListInteractor {
     
 }
 
-extension  MCListInteractor: MCListInteractorProtocol {
+extension MCListInteractor: MCListInteractorProtocol {
     func fetchCharactersList(offset: Int, responseLimit: Int) {
         repository.fetchCharactersList(offset: offset, responseLimit: responseLimit) { [weak self] (result) in
             switch result {

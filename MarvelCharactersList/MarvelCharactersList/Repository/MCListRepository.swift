@@ -10,6 +10,7 @@ import Alamofire
 
 protocol MCListrepositoryProtocol {
     func fetchCharactersList(offset: Int, responseLimit: Int, completion: @escaping (Result<[MCListCharacter], Error>) -> Void)
+    func fetchCharacter(id: Int, completion: @escaping (Result<[MCListCharacter], Error>) -> Void)
 }
 
 class MCListrepository: MCListrepositoryProtocol {
@@ -18,14 +19,20 @@ class MCListrepository: MCListrepositoryProtocol {
     
     private let host = "https://gateway.marvel.com:443"
     
-    func getParameters(offset: Int, responseLimit: Int) -> [String: String] {
+    func getBasicParameters() -> [String: String] {
         let timeStamp = Date().timeIntervalSince1970
         let hash = "\(timeStamp)\(MCListrepository.privateKey)\(MCListrepository.publicKey)".MD5()
         let parameters = ["apikey": MCListrepository.publicKey,
                           "ts": "\(timeStamp)",
-                          "hash": hash,
-                          "offset": "\(offset)",
-                          "limit": "\(responseLimit)"]
+                          "hash": hash]
+        return parameters
+    }
+    
+    func getParameters(offset: Int, responseLimit: Int) -> [String: String] {
+        var parameters = getBasicParameters()
+        parameters["offset"] = "\(offset)"
+        parameters["limit"] = "\(responseLimit)"
+
         return parameters
     }
 }
@@ -49,5 +56,17 @@ extension MCListrepository {
 
 // MARK: - Character detail calls
 extension MCListrepository {
-    
+    func fetchCharacter(id: Int, completion: @escaping (Result<[MCListCharacter], Error>) -> Void) {
+        let request = "/v1/public/characters/\(id)"
+        let url = "\(host)\(request)"
+        
+        AF.request(url, parameters: getBasicParameters(), encoder: URLEncodedFormParameterEncoder.default).responseDecodable(of: MCListCharactersResponse.self) { (response) in
+            switch response.result {
+            case .success(let data):
+                completion(.success(data.data.results))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

@@ -43,6 +43,6 @@ extension MCListPresenter: MCListPresenterProtol {
     }
     
     func didSelectCharacter(_ character: MCListCharacter) {
-        debugPrint("fcharacter selected: \(character.name)")
+        router.goToCharacterDetail(with: character)
     }
 }

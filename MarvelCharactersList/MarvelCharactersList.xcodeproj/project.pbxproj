@@ -28,6 +28,11 @@
 		A0BAB5D52561758100761587 /* MCListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0BAB5D32561758100761587 /* MCListCell.xib */; };
 		A0BAB5DA256176E000761587 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB5D9256176E000761587 /* UITableViewCell+Extension.swift */; };
 		A0BAB5E6256178EE00761587 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB5E5256178EE00761587 /* UIImageView+Extension.swift */; };
+		A0BAB5FB25618BE600761587 /* MCListDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0BAB5FA25618BE600761587 /* MCListDetailViewController.storyboard */; };
+		A0BAB60025618C9400761587 /* MCListDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB5FF25618C9400761587 /* MCListDetailRouter.swift */; };
+		A0BAB60525618C9F00761587 /* MCListDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB60425618C9F00761587 /* MCListDetailInteractor.swift */; };
+		A0BAB60A25618CAA00761587 /* MCListDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB60925618CAA00761587 /* MCListDetailPresenter.swift */; };
+		A0BAB60F2561931800761587 /* MCListDetailViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB60E2561931800761587 /* MCListDetailViewController+UITableView.swift */; };
 		A7E61FB7007EBF8C03304461 /* Pods_MarvelCharactersListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAB1B2C0868012D8AA77982 /* Pods_MarvelCharactersListTests.framework */; };
 		B9A5B066D01C60C65AFE51C8 /* Pods_MarvelCharactersList_MarvelCharactersListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBE9901AD514FBB98F6B329 /* Pods_MarvelCharactersList_MarvelCharactersListUITests.framework */; };
 /* End PBXBuildFile section */
@@ -82,6 +87,11 @@
 		A0BAB5D32561758100761587 /* MCListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MCListCell.xib; sourceTree = "<group>"; };
 		A0BAB5D9256176E000761587 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		A0BAB5E5256178EE00761587 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		A0BAB5FA25618BE600761587 /* MCListDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MCListDetailViewController.storyboard; sourceTree = "<group>"; };
+		A0BAB5FF25618C9400761587 /* MCListDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListDetailRouter.swift; sourceTree = "<group>"; };
+		A0BAB60425618C9F00761587 /* MCListDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListDetailInteractor.swift; sourceTree = "<group>"; };
+		A0BAB60925618CAA00761587 /* MCListDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListDetailPresenter.swift; sourceTree = "<group>"; };
+		A0BAB60E2561931800761587 /* MCListDetailViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MCListDetailViewController+UITableView.swift"; sourceTree = "<group>"; };
 		C9D0D4E523094BCA852B7DAE /* Pods-MarvelCharactersList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharactersList.release.xcconfig"; path = "Target Support Files/Pods-MarvelCharactersList/Pods-MarvelCharactersList.release.xcconfig"; sourceTree = "<group>"; };
 		DEE6EEE33785532B3EFE3EA0 /* Pods_MarvelCharactersList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelCharactersList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A692976339A1908334B2CC /* Pods-MarvelCharactersListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharactersListTests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelCharactersListTests/Pods-MarvelCharactersListTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -194,6 +204,10 @@
 			isa = PBXGroup;
 			children = (
 				A0872F50256127270031B802 /* MCListDetailViewController.swift */,
+				A0BAB5FF25618C9400761587 /* MCListDetailRouter.swift */,
+				A0BAB60425618C9F00761587 /* MCListDetailInteractor.swift */,
+				A0BAB60925618CAA00761587 /* MCListDetailPresenter.swift */,
+				A0BAB60E2561931800761587 /* MCListDetailViewController+UITableView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -222,6 +236,7 @@
 			children = (
 				A0872F69256129700031B802 /* MCListViewController.storyboard */,
 				A0872EFE256120060031B802 /* LaunchScreen.storyboard */,
+				A0BAB5FA25618BE600761587 /* MCListDetailViewController.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -392,6 +407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0BAB5FB25618BE600761587 /* MCListDetailViewController.storyboard in Resources */,
 				A0872F6A256129700031B802 /* MCListViewController.storyboard in Resources */,
 				A0872F00256120060031B802 /* LaunchScreen.storyboard in Resources */,
 				A0872EFD256120060031B802 /* Assets.xcassets in Resources */,
@@ -524,13 +540,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0BAB5C525614D1900761587 /* MCListCharactersResponse.swift in Sources */,
+				A0BAB60525618C9F00761587 /* MCListDetailInteractor.swift in Sources */,
 				A0872F4B256127040031B802 /* MCListViewController.swift in Sources */,
 				A0BAB5E6256178EE00761587 /* UIImageView+Extension.swift in Sources */,
 				A0BAB5BF25614A9900761587 /* String+Extension.swift in Sources */,
 				A0BAB5DA256176E000761587 /* UITableViewCell+Extension.swift in Sources */,
 				A0872F72256129F30031B802 /* MCListRouter.swift in Sources */,
+				A0BAB60F2561931800761587 /* MCListDetailViewController+UITableView.swift in Sources */,
+				A0BAB60025618C9400761587 /* MCListDetailRouter.swift in Sources */,
 				A0872F7C25612A0F0031B802 /* MCListPresenter.swift in Sources */,
 				A0872F77256129FF0031B802 /* MCListInteractor.swift in Sources */,
+				A0BAB60A25618CAA00761587 /* MCListDetailPresenter.swift in Sources */,
 				A0BAB5CD25616A2200761587 /* MCListViewController+UITableView.swift in Sources */,
 				A0872EF4256120050031B802 /* AppDelegate.swift in Sources */,
 				A0872F8B25612CBF0031B802 /* MCListRepository.swift in Sources */,
