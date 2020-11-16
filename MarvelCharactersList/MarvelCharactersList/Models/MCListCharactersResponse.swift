@@ -40,7 +40,7 @@ struct MCListCharacter: Codable {
     }
     
     func getThumbnail() -> String {
-        return "\(thumbnail.path).\(thumbnail.thumbnailExtension)"
+        return "\(thumbnail.path).\(thumbnail.thumbnailExtension)".replacingOccurrences(of: "http://", with: "https://")
     }
 }
 
