@@ -17,9 +17,9 @@ protocol MCListPresenterProtol: class {
 class MCListPresenter {
     let view: MCListViewProtocol
     let interactor: MCListInteractorProtocol
-    let router: MCListRouterProtocl
+    let router: MCListRouterProtcol
     
-    init(view: MCListViewProtocol, interactor: MCListInteractorProtocol, router: MCListRouterProtocl) {
+    init(view: MCListViewProtocol, interactor: MCListInteractorProtocol, router: MCListRouterProtcol) {
         self.view = view
         self.interactor = interactor
         self.router = router

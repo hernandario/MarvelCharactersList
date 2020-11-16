@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MCListRouterProtocl: class {
+protocol MCListRouterProtcol: class {
     func goToCharacterDetail(with character: MCListCharacter)
 }
 
@@ -19,7 +19,7 @@ class MCListRouter {
     }
 }
 
-extension MCListRouter: MCListRouterProtocl {
+extension MCListRouter: MCListRouterProtcol {
     func goToCharacterDetail(with character: MCListCharacter) {
         guard let detailController = MCListDetailRouter.createModule(with: character) else { return }
         controller.navigationController?.pushViewController(detailController, animated: true)

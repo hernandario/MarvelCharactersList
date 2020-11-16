@@ -14,12 +14,12 @@ extension UIImageView {
         let timeStamp = Date().timeIntervalSince1970
         let hash = "\(timeStamp)\(MCListrepository.privateKey)\(MCListrepository.publicKey)".MD5()
         let params = "?apikey=\(MCListrepository.publicKey)&ts=\(timeStamp)&hash=\(hash)"
-        let fixedUrl = url.replacingOccurrences(of: "http://", with: "https://")
-        guard let imageUrl = URL(string: "\(fixedUrl)\(params)") else {
+        guard let imageUrl = URL(string: "\(url)\(params)") else {
             self.image = placeHolder
             return
         }
-        let imageResource = ImageResource(downloadURL: imageUrl, cacheKey: fixedUrl)
+        // Adds cache key manualy becouse the timestamp in the request is going to be always diferent. 
+        let imageResource = ImageResource(downloadURL: imageUrl, cacheKey: url)
         self.kf.setImage(with: imageResource, placeholder: placeHolder)
     }
 }

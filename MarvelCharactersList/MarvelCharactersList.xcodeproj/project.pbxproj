@@ -33,6 +33,12 @@
 		A0BAB60525618C9F00761587 /* MCListDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB60425618C9F00761587 /* MCListDetailInteractor.swift */; };
 		A0BAB60A25618CAA00761587 /* MCListDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB60925618CAA00761587 /* MCListDetailPresenter.swift */; };
 		A0BAB60F2561931800761587 /* MCListDetailViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB60E2561931800761587 /* MCListDetailViewController+UITableView.swift */; };
+		A0BAB61825627FF800761587 /* MCListViewPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB61725627FF800761587 /* MCListViewPresenterMock.swift */; };
+		A0BAB6202562800800761587 /* MCListViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB61F2562800800761587 /* MCListViewControllerMock.swift */; };
+		A0BAB6252562801300761587 /* MCListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB6242562801300761587 /* MCListViewControllerTests.swift */; };
+		A0BAB62A2562813E00761587 /* MCListRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB6292562813E00761587 /* MCListRouterMock.swift */; };
+		A0BAB632256283B800761587 /* MCListInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB631256283B800761587 /* MCListInteractorMock.swift */; };
+		A0BAB63A2562844C00761587 /* MCListrepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BAB6392562844C00761587 /* MCListrepositoryMock.swift */; };
 		A7E61FB7007EBF8C03304461 /* Pods_MarvelCharactersListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAB1B2C0868012D8AA77982 /* Pods_MarvelCharactersListTests.framework */; };
 		B9A5B066D01C60C65AFE51C8 /* Pods_MarvelCharactersList_MarvelCharactersListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBE9901AD514FBB98F6B329 /* Pods_MarvelCharactersList_MarvelCharactersListUITests.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +98,12 @@
 		A0BAB60425618C9F00761587 /* MCListDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListDetailInteractor.swift; sourceTree = "<group>"; };
 		A0BAB60925618CAA00761587 /* MCListDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListDetailPresenter.swift; sourceTree = "<group>"; };
 		A0BAB60E2561931800761587 /* MCListDetailViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MCListDetailViewController+UITableView.swift"; sourceTree = "<group>"; };
+		A0BAB61725627FF800761587 /* MCListViewPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListViewPresenterMock.swift; sourceTree = "<group>"; };
+		A0BAB61F2562800800761587 /* MCListViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListViewControllerMock.swift; sourceTree = "<group>"; };
+		A0BAB6242562801300761587 /* MCListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListViewControllerTests.swift; sourceTree = "<group>"; };
+		A0BAB6292562813E00761587 /* MCListRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListRouterMock.swift; sourceTree = "<group>"; };
+		A0BAB631256283B800761587 /* MCListInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListInteractorMock.swift; sourceTree = "<group>"; };
+		A0BAB6392562844C00761587 /* MCListrepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCListrepositoryMock.swift; sourceTree = "<group>"; };
 		C9D0D4E523094BCA852B7DAE /* Pods-MarvelCharactersList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharactersList.release.xcconfig"; path = "Target Support Files/Pods-MarvelCharactersList/Pods-MarvelCharactersList.release.xcconfig"; sourceTree = "<group>"; };
 		DEE6EEE33785532B3EFE3EA0 /* Pods_MarvelCharactersList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelCharactersList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A692976339A1908334B2CC /* Pods-MarvelCharactersListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharactersListTests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelCharactersListTests/Pods-MarvelCharactersListTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -163,8 +175,10 @@
 		A0872F09256120070031B802 /* MarvelCharactersListTests */ = {
 			isa = PBXGroup;
 			children = (
+				A0BAB61625627FB900761587 /* List */,
 				A0872F0A256120070031B802 /* MarvelCharactersListTests.swift */,
 				A0872F0C256120070031B802 /* Info.plist */,
+				A0BAB6392562844C00761587 /* MCListrepositoryMock.swift */,
 			);
 			path = MarvelCharactersListTests;
 			sourceTree = "<group>";
@@ -274,6 +288,18 @@
 				A0BAB5D32561758100761587 /* MCListCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A0BAB61625627FB900761587 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				A0BAB61725627FF800761587 /* MCListViewPresenterMock.swift */,
+				A0BAB631256283B800761587 /* MCListInteractorMock.swift */,
+				A0BAB6292562813E00761587 /* MCListRouterMock.swift */,
+				A0BAB61F2562800800761587 /* MCListViewControllerMock.swift */,
+				A0BAB6242562801300761587 /* MCListViewControllerTests.swift */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 		B1FDBBA68B96BE7D449E5C19 /* Frameworks */ = {
@@ -564,7 +590,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0BAB632256283B800761587 /* MCListInteractorMock.swift in Sources */,
+				A0BAB6252562801300761587 /* MCListViewControllerTests.swift in Sources */,
+				A0BAB6202562800800761587 /* MCListViewControllerMock.swift in Sources */,
+				A0BAB62A2562813E00761587 /* MCListRouterMock.swift in Sources */,
+				A0BAB63A2562844C00761587 /* MCListrepositoryMock.swift in Sources */,
 				A0872F0B256120070031B802 /* MarvelCharactersListTests.swift in Sources */,
+				A0BAB61825627FF800761587 /* MCListViewPresenterMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
