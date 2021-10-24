@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MCListRouterProtcol: class {
+protocol MCListRouterProtcol: AnyObject {
     func goToCharacterDetail(with character: MCListCharacter)
 }
 

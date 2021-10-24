@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol MCListDetailInteractorProtocol: class {
+protocol MCListDetailInteractorProtocol: AnyObject {
     func fetchCharacter(with id: Int)
 }
 
 class MCListDetailInteractor {
     private var repository: MCListrepositoryProtocol
-    var presenter: MCListDetailPresenterProtol?
+    weak var presenter: MCListDetailPresenterProtol?
     
     init(repository: MCListrepositoryProtocol) {
         self.repository = repository

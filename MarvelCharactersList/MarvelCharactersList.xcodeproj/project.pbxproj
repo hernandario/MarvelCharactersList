@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5FE40ECB272553490027BDAD /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE40ECA272553490027BDAD /* UIAlertController+Extension.swift */; };
+		5FE40ECF27255B450027BDAD /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE40ECE27255B450027BDAD /* SpinnerView.swift */; };
 		97C2C0E3663D504F8BFF2402 /* Pods_MarvelCharactersList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEE6EEE33785532B3EFE3EA0 /* Pods_MarvelCharactersList.framework */; };
 		A0872EF4256120050031B802 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0872EF3256120050031B802 /* AppDelegate.swift */; };
 		A0872EF6256120050031B802 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0872EF5256120050031B802 /* SceneDelegate.swift */; };
@@ -63,6 +65,8 @@
 /* Begin PBXFileReference section */
 		2BBE9901AD514FBB98F6B329 /* Pods_MarvelCharactersList_MarvelCharactersListUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelCharactersList_MarvelCharactersListUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AAB1B2C0868012D8AA77982 /* Pods_MarvelCharactersListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelCharactersListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FE40ECA272553490027BDAD /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		5FE40ECE27255B450027BDAD /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		6F8A80304145ABE9C725E50F /* Pods-MarvelCharactersListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharactersListTests.release.xcconfig"; path = "Target Support Files/Pods-MarvelCharactersListTests/Pods-MarvelCharactersListTests.release.xcconfig"; sourceTree = "<group>"; };
 		8E273EF652FBD260737D969E /* Pods-MarvelCharactersList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharactersList.debug.xcconfig"; path = "Target Support Files/Pods-MarvelCharactersList/Pods-MarvelCharactersList.debug.xcconfig"; sourceTree = "<group>"; };
 		95E3C9026086584FD54B10AB /* Pods-MarvelCharactersList-MarvelCharactersListUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelCharactersList-MarvelCharactersListUITests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelCharactersList-MarvelCharactersListUITests/Pods-MarvelCharactersList-MarvelCharactersListUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +141,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5FE40ECC27255B270027BDAD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5FE40ECE27255B450027BDAD /* SpinnerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5FE40ECD27255B2F0027BDAD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A0BAB5BE25614A9900761587 /* String+Extension.swift */,
+				A0BAB5D9256176E000761587 /* UITableViewCell+Extension.swift */,
+				A0BAB5E5256178EE00761587 /* UIImageView+Extension.swift */,
+				5FE40ECA272553490027BDAD /* UIAlertController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A0872EE7256120050031B802 = {
 			isa = PBXGroup;
 			children = (
@@ -266,9 +289,8 @@
 		A0BAB5B525614A5500761587 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A0BAB5BE25614A9900761587 /* String+Extension.swift */,
-				A0BAB5D9256176E000761587 /* UITableViewCell+Extension.swift */,
-				A0BAB5E5256178EE00761587 /* UIImageView+Extension.swift */,
+				5FE40ECD27255B2F0027BDAD /* Extensions */,
+				5FE40ECC27255B270027BDAD /* Views */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -571,6 +593,7 @@
 				A0BAB5E6256178EE00761587 /* UIImageView+Extension.swift in Sources */,
 				A0BAB5BF25614A9900761587 /* String+Extension.swift in Sources */,
 				A0BAB5DA256176E000761587 /* UITableViewCell+Extension.swift in Sources */,
+				5FE40ECF27255B450027BDAD /* SpinnerView.swift in Sources */,
 				A0872F72256129F30031B802 /* MCListRouter.swift in Sources */,
 				A0BAB60F2561931800761587 /* MCListDetailViewController+UITableView.swift in Sources */,
 				A0BAB60025618C9400761587 /* MCListDetailRouter.swift in Sources */,
@@ -581,6 +604,7 @@
 				A0872EF4256120050031B802 /* AppDelegate.swift in Sources */,
 				A0872F8B25612CBF0031B802 /* MCListRepository.swift in Sources */,
 				A0872EF6256120050031B802 /* SceneDelegate.swift in Sources */,
+				5FE40ECB272553490027BDAD /* UIAlertController+Extension.swift in Sources */,
 				A0872F52256127270031B802 /* MCListDetailViewController.swift in Sources */,
 				A0BAB5D42561758100761587 /* MCListCell.swift in Sources */,
 			);

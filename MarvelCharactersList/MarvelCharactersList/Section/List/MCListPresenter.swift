@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MCListPresenterProtol: class {
+protocol MCListPresenterProtol: AnyObject {
     func fetchCharacters(offset: Int, responseLimit: Int)
     func fetchDidSucces(items: [MCListCharacter])
     func fetchDidFail()

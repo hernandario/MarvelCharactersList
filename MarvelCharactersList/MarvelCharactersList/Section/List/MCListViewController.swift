@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MCListViewProtocol: class {
+protocol MCListViewProtocol: AnyObject {
     func showSpinner()
     func removeSpinner()
     func fetchDidSucces(newItems: [MCListCharacter])
@@ -17,18 +17,16 @@ protocol MCListViewProtocol: class {
 class MCListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
-    
     var items = [MCListCharacter]()
     var presenter: MCListPresenterProtol?
     var offSet: Int = 0
     var isLoading = false
     var responseLimit = 20
-    
-    let spinnerView = UIView()
-    let spinner = UIActivityIndicatorView(style: .large)
+    var spinnerView: SpinnerView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setSpinner()
         initScene()
         initUI()
     }
@@ -36,16 +34,18 @@ class MCListViewController: UIViewController {
     private func initScene() {
         let interactor = MCListInteractor(repository: MCListrepository())
         let router = MCListRouter(with: self)
-        let presenter = MCListPresenter(view: self, interactor: interactor, router: router)
-
+        self.presenter = MCListPresenter(view: self, interactor: interactor, router: router)
         interactor.presenter = presenter
-        self.presenter = presenter
         self.presenter?.fetchCharacters(offset: offSet, responseLimit: responseLimit)
     }
     
     private func initUI() {
         setNavigationController()
         setTalbeView()
+    }
+    
+    private func setSpinner() {
+        spinnerView = SpinnerView(parent: self.view)
     }
     
     private func setNavigationController() {
@@ -65,6 +65,10 @@ class MCListViewController: UIViewController {
         offSet = 0
         presenter?.fetchCharacters(offset: offSet, responseLimit: responseLimit)
     }
+    
+    func onCancelAlertDidTap() {
+        refreshButtonDidTap(self)
+    }
 }
 
 //MARK: - MCListViewProtocol
@@ -76,42 +80,17 @@ extension MCListViewController: MCListViewProtocol {
     }
     
     func fetchDidFail() {
-        let alert = UIAlertController(title: "Ups...", message: "Coldn't load the data right now.\nPlase try again.", preferredStyle: .actionSheet)
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let refresh = UIAlertAction(title: "Refresh", style: .default) { [weak self] (alert) in
-            self?.refreshButtonDidTap(alert)
-        }
-        
-        alert.addAction(refresh)
-        alert.addAction(cancel)
+        let alert = UIAlertController.getAlertForType(.fetchFail, refreshAction: onCancelAlertDidTap)
         present(alert, animated: true, completion: nil)
     }
     
     func showSpinner() {
         refreshButton.isEnabled = false
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.color = .white
-        spinner.startAnimating()
-        spinnerView.addSubview(spinner)
-        spinner.centerXAnchor.constraint(equalTo: spinnerView.centerXAnchor).isActive = true
-        spinner.centerYAnchor.constraint(equalTo: spinnerView.centerYAnchor).isActive = true
-        
-        
-        spinnerView.translatesAutoresizingMaskIntoConstraints = false
-        spinnerView.backgroundColor = .gray
-        spinnerView.alpha = 0.5
-        view.addSubview(spinnerView)
-        
-        
-        spinnerView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-        spinnerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        spinnerView?.startSpinnerView()
     }
     
     func removeSpinner() {
         refreshButton.isEnabled = true
-        view.backgroundColor = .white
-        spinner.stopAnimating()
-        spinner.removeFromSuperview()
-        spinnerView.removeFromSuperview()
+        spinnerView?.stopSpinner()
     }
 }

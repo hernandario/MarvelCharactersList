@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MCListDetailProtocol: class {
+protocol MCListDetailProtocol: AnyObject {
     func showSpinner()
     func removeSpinner()
     func fetchDidSucces(character: MCListCharacter)
@@ -17,12 +17,9 @@ protocol MCListDetailProtocol: class {
 class MCListDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var characterImage: UIImageView!
-    
     var character: MCListCharacter?
     var presenter: MCListDetailPresenterProtol?
-    
-    let spinnerView = UIView()
-    let spinner = UIActivityIndicatorView(style: .large)
+    var spinnerView: SpinnerView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +29,14 @@ class MCListDetailViewController: UIViewController {
     }
 
     private func initUI() {
+        setSpinner()
         setNavigationController()
         setTalbeView()
         characterImage.getMarvelAsset(url: character?.getThumbnail() ?? "")
+    }
+    
+    private func setSpinner() {
+        spinnerView = SpinnerView(parent: self.view)
     }
     
     private func setNavigationController() {
@@ -57,36 +59,15 @@ extension MCListDetailViewController: MCListDetailProtocol {
     }
     
     func fetchDidFail() {
-        let alert = UIAlertController(title: "Ups...", message: "Coldn't load the data right now.\nPlase try again.", preferredStyle: .actionSheet)
-        let ok = UIAlertAction(title: "OK", style: .destructive, handler: nil)
-        
-        alert.addAction(ok)
+        let alert = UIAlertController.getAlertForType(.fetchFail)
         present(alert, animated: true, completion: nil)
     }
     
     func showSpinner() {
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.color = .white
-        spinner.startAnimating()
-        spinnerView.addSubview(spinner)
-        spinner.centerXAnchor.constraint(equalTo: spinnerView.centerXAnchor).isActive = true
-        spinner.centerYAnchor.constraint(equalTo: spinnerView.centerYAnchor).isActive = true
-        
-        
-        spinnerView.translatesAutoresizingMaskIntoConstraints = false
-        spinnerView.backgroundColor = .gray
-        spinnerView.alpha = 0.5
-        view.addSubview(spinnerView)
-        
-        
-        spinnerView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-        spinnerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        spinnerView?.startSpinnerView()
     }
     
     func removeSpinner() {
-        view.backgroundColor = .white
-        spinner.stopAnimating()
-        spinner.removeFromSuperview()
-        spinnerView.removeFromSuperview()
+        spinnerView?.stopSpinner()
     }
 }
